@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <form enctype="multipart/form-data" th:fragment="form_create" th:object="${articleRequest}" class="form-group pt-3" th:action="@{/handleAddArticle}" method="post">
+        <div class="row bg-light "  >
+    <div class="col-5 ps-5 pt-5" >
+        <div class="w-75 ">
+            <img class="w-100 " id="output-image" src="https://imgs.search.brave.com/it3MRB1aorg3HnJlI1w-eFLsqNUrkEn9dC-oWm-tVBs/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDUzNDk2/OTcuanBn">
+            <input  class="w-100 mt-2 form-control form-control-sm" name="file"  type="file" onchange="postImage(event)">
+            <div class="text-warning" th:if="${error}">[[${error}]]</div>
+        </div>
+    </div>
+
+    <div class="col-7 pe-5">
+            <h5>Create a New Post</h5>
+            <div class="">
+                <label  class="fs-6 d-block">Post Title</label>
+                <input class="w-100 form-control" th:field="*{title}" type="text" >
+                <div class="text-danger fs-6" th:errors="*{title}">fcwefewfewfwe</div>
+            </div>
+            <input type="hidden" th:field="*{id}">
+            <div class="">
+                <label  class="fs-6 d-block">Description</label>
+                <textarea th:field="*{desciption}" class="form-control " >
+                </textarea>
+                <div class="text-danger fs-6" th:errors="*{desciption}">fcwefewfewfwe</div>
+            </div>
+            <div class="d-flex justify-content-between">
+                <div class="">
+                    <label  class="fs-6 d-block">Author</label>
+                        <select th:field="*{authorId}" class="form-select form-select-lg mb-3 w-100" aria-label=".form-select-lg example">
+                        <option th:each="author:${author}" th:value="${author.id}" th:text="${author.fullName}">me</option>
+                    </select>
+
+                </div>
+                <div class="">
+                    <label  class="fs-6 d-block">Category</label>
+                    <div >
+                    <div class="bg-white" >
+                        <select required th:field="*{categoryId}" class="form-select" size="3" aria-label="size 3 select example">
+                            <option class="" th:each="category : ${category}" th:value="${category.id}" th:text="${category.category}"></option>
+                        </select>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mt-4 mb-5">
+               <button class="btn btn-primary"><a>Save</a></button>
+                <button class="btn btn-outline-dark" onclick="homePage1()"><a>Cancel</a></button>
+            </div>
+
+    </div>
+
+</div>
+    </form>
+</body>
+</html>

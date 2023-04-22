@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="row" th:fragment="category" >
+  <div class="col-10">
+    <img class="w-100 h-75 " src="https://www.applavia.com/wp-content/uploads/2022/07/11-Best-Anime-Wallpaper-Apps-for-iPhone-scaled.jpg">
+    <h1>ResArticle</h1>
+    <p>Free posting and searing any article with insane freedom</p>
+    <hr class="bg-light">
+    <h1>Popular Categories</h1>
+    <div class="row">
+      <div class="col-6">
+        <th:block th:each="category : ${category}">
+        <button  class="btn w-100 mt-2 btn btn-outline-secondary">
+          <a  class="text-decoration-none text-black"  th:text="${category.category}" th:href="@{'/alluser/'+${category.id}}"></a>
+        </button>
+        </th:block>
+      </div>
+      <div class="col-6">
+      </div>
+    </div>
+  </div>
+  <div class="col-2">
+  </div>
+</div>
+</body>
+</html>

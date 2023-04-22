@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div  th:fragment="carduser" th:each="article:${article}" class="col-lg-3 col-md-4 col-sm-6 col-12 g-3">
+  <div class="card h-100 ">
+    <img th:src="${article.imageURL}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title" th:text="${article.author.username}"></h5>
+      <p class="card-text" th:text="${article.article}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a th:href="@{'/viewprofile/'+${article.id}}" class="btn btn-primary">View Profile</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

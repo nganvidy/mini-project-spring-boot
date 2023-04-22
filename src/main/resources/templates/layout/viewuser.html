@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="row" th:fragment="viewuser" th:object="${article}">
+  <div class="col-12 h-25 w-100">
+    <img class="w-100" style="height: 200px" th:src="*{imageURL}">
+  </div>
+</div>
+
+</body>
+</html>

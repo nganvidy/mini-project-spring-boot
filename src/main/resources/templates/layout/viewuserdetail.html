@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+//profile details
+
+<div class="container bg-light" th:fragment="viewuserdetail">
+  <div class="row position-relative start-margin" th:object="${article}">
+      <div class="position-absolute">
+              <img class="style-profile rounded-circle border border-secondary border-2" th:src="*{author.profileImage}">
+      </div>
+      <div class="position-absolute start-status">
+        <h3 class="text-white" th:text="*{author.username}"></h3>
+          <h4 class="text-warning" th:text="'@'+*{author.username}"></h4>
+          <br>
+          <p th:text="*{author.bio}">cwecewc</p>
+      </div>
+    <div class="col-6  " >
+
+      <h2>More Information</h2>
+        <hr>
+        <div class="row">
+            <div class="col-3"><label>Gender :</label></div>
+            <div class="col-6"><p th:text="*{author.gender}"></p></div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-3"><label>Address :</label></div>
+            <div class="col-6"><p th:text="*{author.address}"></p></div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-3"><label>E-mail :</label></div>
+            <div class="col-6"><p th:text="*{author.email}"></p></div>
+        </div>
+        <hr>
+    </div>
+    <div class="col-6">
+     <div th:if="${article}">
+         <div class="card position-relative m-3" th:fragment="card" th:each="article:${articlelast}">
+             <img onclick="goto()" th:src="${article.imageURL}" class="card-img-top " alt="...">
+             <div class="row">
+                 <div class="col-4" >
+                     <a th:href="@{'/viewprofile/'+${article.id}}" style="cursor: pointer"><img  class="image-profile border-3 border btn-primary position-absolute rounded-circle " th:src="${article.author.profileImage}" alt=""/></a>
+                 </div>
+                 <div class="col-6">
+                     <h3 th:text="${article.author.username}">one_jonh</h3>
+                     <h5 class="text-warning">@[[${article.author.username}]]</h5>
+
+                 </div>
+             </div>
+             <div class="card-body">
+                 <h5 class="card-title " th:text="${article.title}">Card title</h5>
+                 <div class="d-flex gap-2">
+                     <p class="card-title bg-warning rounded-2 p-1 text-white">[[${article.category.category}]]</p>
+                     <p class="card-title bg-warning rounded-2 p-1 text-white">Programming</p>
+                 </div>
+                 <p class="card-text" th:text="${article.article}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+             </div>
+         </div>
+     </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
